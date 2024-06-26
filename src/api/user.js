@@ -61,7 +61,6 @@ class UserApi {
         }
     }
 
-    // Método para validar o token
     async validarToken(req, res, next) {
         const token = req.headers.authorization;
 
