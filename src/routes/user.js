@@ -4,10 +4,12 @@ const UserApi = require('.api/task');
 const app = express()
 app.use (express.json())
 
-const userApi = new UserApi();
+const UserApi = new UserApi();
 
-app.get('/users', userApi.listarUsuario);
-app.post('/users', userApi.criarUsuario);
-app.post('/login', userApi.validarToken);
+app.get('/users', UserApi.listarUsuario);
+app.put('/users', UserApi.alterarUsuario)
+app.post('/users', UserApi.criarUsuario);
+app.delete('/users', UserApi.deletarUsuario)
+app.post('/login', UserApi.validarToken);
 
 app.use(userApi.validarToken);

@@ -4,9 +4,9 @@ const TaskApi = require('.api/task');
 const app = express()
 app.use (express.json())
 
-const taskApi = new TaskApi();
+const TaskApi = new TaskApi();
 
-app.get('/tasks', taskApi.listarTask);
-app.post('/tasks', taskApi.criarTask);
-app.put('/tasks/:id', taskApi.alterarTask);
-app.delete('/tasks/:id', taskApi.deletarTask);
+app.get('/tasks', TaskApi.listarTarefas);
+app.post('/tasks', TaskApi.criarTarefa);
+app.put('/tasks/:id', TaskApi.alterarTarefa);
+app.delete('/tasks/:id', TaskApi.deletarTarefa);
