@@ -1,15 +1,14 @@
 const express = require('express');
-const UserApi = require('.api/task');
+const UserApi = require('../api/user')
 
-const app = express()
-app.use (express.json())
+const app = express.Router();
 
-const UserApi = new UserApi();
+app.get('/', UserApi.listarUsuario);
+app.put('/', UserApi.alterarUsuario)
+app.post('/', UserApi.criarUsuario);
+app.delete('/', UserApi.deletarUsuario)
+app.post('/', UserApi.validarToken);
 
-app.get('/users', UserApi.listarUsuario);
-app.put('/users', UserApi.alterarUsuario)
-app.post('/users', UserApi.criarUsuario);
-app.delete('/users', UserApi.deletarUsuario)
-app.post('/login', UserApi.validarToken);
+app.use(UserApi.validarToken);
 
-app.use(userApi.validarToken);
+module.exports = app;

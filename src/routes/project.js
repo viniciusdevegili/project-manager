@@ -1,12 +1,12 @@
 const express = require('express');
-const ProjectApi = require('.api/project');
+const ProjectApi = require('../api/project');
 
-const app = express()
-app.use (express.json())
+const app = express.Router();
+app.use(express.json()); 
 
-const ProjectApi = new ProjectApi();
+app.get('/', ProjectApi.listarProjetos);
+app.post('/', ProjectApi.criarProjeto);
+app.put('/:id', ProjectApi.alterarProjeto);
+app.delete('/:id', ProjectApi.deletarProjeto);
 
-app.get('/projects', ProjectApi.listarProjetos);
-app.post('/projects', ProjectApi.criarProjeto);
-app.put('/projects/:id', ProjectApi.alterarProjeto);
-app.delete('/projects/:id', ProjectApi.deletarProjeto);
+module.exports = app;

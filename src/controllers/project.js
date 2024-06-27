@@ -1,6 +1,8 @@
-const Project = require('../model/project');
+const Project = require('../models/project');
 
 class ProjectController {
+    constructor() {
+    }
     async criarProjeto(nome, descricao) {
         if (
             nome === undefined
@@ -9,10 +11,12 @@ class ProjectController {
             throw new Error('Nome e descrição são obrigatórios');
         }
 
-        const project = await Project
-        .create({titulo, conteudo});
+        const project = await Project.create({
+            nome,
+            descricao
+        });
 
-        return postagem;
+        return project;
     }
 
     async buscarPorId(id) {
@@ -45,7 +49,7 @@ class ProjectController {
 
         project.save();
 
-        return postagem;
+        return project;
     }
 
     async deletarProjeto(id) {
@@ -63,4 +67,4 @@ class ProjectController {
     }
 }
 
-module.exports = ProjectController;
+module.exports = new ProjectController();

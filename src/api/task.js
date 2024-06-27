@@ -1,4 +1,4 @@
-const TaskController = require('../controller/task');
+const TaskController = require('../controllers/task');
 
 class TaskApi {
     constructor() {
@@ -60,4 +60,4 @@ class TaskApi {
     }
 }
 
-module.exports = TaskApi;
+module.exports = new TaskApi();

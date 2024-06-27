@@ -1,7 +1,6 @@
 const express = require('express');
 const sequelize = require('./config/database');
-
-const app = express();
+const app = require('./app');
 
 sequelize.sync({ force: false }) 
   .then(() => {
