@@ -2,6 +2,7 @@ const express = require('express');
 const TaskApi = require('../api/task');
 
 const app = express.Router();
+app.use(express.json());
 
 app.get('/', TaskApi.listarTarefas);
 app.post('/', TaskApi.criarTarefa);

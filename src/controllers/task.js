@@ -1,7 +1,9 @@
 const Task = require('../models/task');
 
 class TaskController {
-    async criarTask(titulo, descricao, status, projetoId) {
+    constructor() {
+    }
+    async criarTarefa(titulo, descricao, status, projetoId) {
         if (
             titulo === undefined
             || descricao === undefined
@@ -21,7 +23,7 @@ class TaskController {
         return tarefa;
     }
 
-    async buscarTaskPorId(id) {
+    async buscarTarefaPorId(id) {
         if (id === undefined) {
             throw new Error('ID é obrigatório');
         }
@@ -35,7 +37,7 @@ class TaskController {
         return tarefa;
     }
 
-    async alterarTask(id, titulo, descricao, status, dataConclusao) {
+    async alterarTarefa(id, titulo, descricao, status, dataConclusao) {
         if (
             id === undefined
             || titulo === undefined
@@ -59,7 +61,7 @@ class TaskController {
         return tarefa;
     }
 
-    async deletarTask(id) {
+    async deletarTarefa(id) {
         if (id === undefined) {
             throw new Error('ID é obrigatório');
         }
@@ -69,9 +71,9 @@ class TaskController {
         await tarefa.destroy();
     }
 
-    async listarTasks() {
+    async listarTarefas() {
         return Task.findAll();
     }
 }
 
-module.exports = TaskController;
+module.exports = new TaskController();

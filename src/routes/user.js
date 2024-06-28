@@ -2,6 +2,7 @@ const express = require('express');
 const UserApi = require('../api/user')
 
 const app = express.Router();
+app.use(express.json());
 
 app.get('/', UserApi.listarUsuario);
 app.put('/', UserApi.alterarUsuario)

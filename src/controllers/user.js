@@ -1,6 +1,8 @@
 const User = require('../models/user');
 
 class UserController {
+    constructor(){
+    }
     async criarUsuario(nome, email, senha) {
         if (
             nome === undefined
@@ -10,8 +12,11 @@ class UserController {
             throw new Error('Nome, email e senha são obrigatórios');
         }
 
-        const user = await User
-            .create({ nome, email, senha });
+        const user = await User.create({ 
+            nome, 
+            email, 
+            senha 
+        });
 
         return user;
     }
@@ -97,4 +102,4 @@ class UserController {
     }
 }
 
-module.exports = UserController;
+module.exports = new UserController();
