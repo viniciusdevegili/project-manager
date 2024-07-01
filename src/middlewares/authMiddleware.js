@@ -1,20 +1,20 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-
-module.exports = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-
-  if (!authHeader) {
-    return res.status(401).json({ error: 'Token não fornecido' });
+class AuthMiddlware {
+  async validarToken(req, res, next) {
+    const token = req.headers.authorization;
+ 
+    if (!token) {
+      return res.status(401).json({ message: "Token é obrigatório" });
+    }
+ 
+    try {
+      const chave = jwt.verify(token, process.env.JWT_SECRET);
+      req.userId = chave.id;
+ 
+      return next();
+    } catch (error) {
+      return res.status(401).json({ message: "Token inválido" });
+    }
   }
-
-  const [, token] = authHeader.split(' ');
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.id;
-    return next();
-  } catch (err) {
-    return res.status(401).json({ error: 'Token inválido' });
-  }
-};
+}
+ 
+module.exports = new AuthMiddlware();

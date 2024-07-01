@@ -1,5 +1,6 @@
 const controller = require('../controllers/user');
 
+
 class UserApi {
 
     async criarUsuario(req, res) {
@@ -51,7 +52,7 @@ class UserApi {
 
     async login(req, res) {
         try {
-            const { email, senha } = req.body;
+            const {email, senha} = req.body;
             const token = await controller.login(email, senha);
             return res.status(200).send(token);
         } catch (error) {

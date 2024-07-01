@@ -9,7 +9,6 @@ app.put('/', UserApi.alterarUsuario)
 app.post('/', UserApi.criarUsuario);
 app.delete('/', UserApi.deletarUsuario)
 app.post('/', UserApi.validarToken);
-app.post('/', UserApi.login);
 
 app.use(UserApi.validarToken);
 
