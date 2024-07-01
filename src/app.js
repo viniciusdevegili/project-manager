@@ -16,7 +16,6 @@ app.use('/api/user', userRoutes);
 app.use('/api/project', projectRoutes);
 app.use('/api/task', taskRoutes);
 
-
 database.sync({ force: false })
     .then(_ => {
         if (process.env.NODE_ENV !== 'test' ) {
